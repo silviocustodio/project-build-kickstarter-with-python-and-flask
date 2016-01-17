@@ -1,0 +1,59 @@
+
+ {% extends "base.html" %}
+ {% set active_page = "index" %}
+
+{% block subtitle %}
+  Crowdfunding Made Simple
+{% endblock %}
+
+
+ {% block content %}
+     <!-- Main jumbotron for a primary marketing message or call to action -->
+     <div class="jumbotron">
+       <h1><center>Crowdfunding Made Simple</h1></center>
+       <p><center><font size="4">Punchstarter is a simple crowdfunding plataforms to help make dreams come true!</font></center></p>
+      </div>
+
+	  <h2> New Projects </h2>
+      <div>
+      	{% for project in projects %}
+
+      	{% if loop.index % 3 == 1 %}
+      	<div class="row">
+
+      		{% endif %}
+
+      		<div class="col-sm-3">
+      			<div class="search-card">
+      				<div class="search-description">
+      					<a href="{{ url_for('project_detail', project_id=project.id) }}"><img class="img-responsive center-block search-thumbnail" src="{{ project.image_path }}"></a>
+      				</br/>
+      				<strong><a href="{{ url_for('project_detail', project_id=project.id) }}">{{ project.name }}</a></strong>
+      			</br/>
+      			{{ project.short_description|truncate(150,False) }}
+      		</div>
+
+      		<div class="search-summary">
+      			<div class="row">
+      				<div class="col-sm-4 text-center">{{ project.percentage_funded }}% <br/> funded </div>
+      				<div class="col-sm-4 text-center">${{ project.total_pledges }} <br/> pledged </div>
+      				<div class="col-sm-4 text-center">{{ project.num_days_left }} <br/> days left</div>
+      			</div>		  		
+      		</div>
+      	</div>
+      </div>
+      <div class="col-sm-1"></div>
+
+      {% if loop.index % 3 == 0 %}
+
+
+  </div>
+  {% endif %}
+
+  {% endfor %}
+
+	  </div>
+
+ {% endblock content %}
+
+      

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% set active_page = "project_detail" %}
+
+{% block subtitle %}
+  {{ project.name }}
+{% endblock %}
+
+{% block content %}
+     
+    <div class="row">
+       <div class="col-sm-12" style="border: 0px solid #F00">
+       	<div class="panel">
+	       <h1 class="text-center"> {{ project.name }}</h1>
+	       <div class="text-center"> by {{ project.creator.first_name }} {{ project.creator.last_name}}</div>
+        </div>
+    	</div>
+    </div>
+
+    <div class="col-xs-12" style="height:30px;"></div>
+
+    <div class="row">
+    	<div class="col-sm-8" style="border: 0px solid #F00">
+    		<div class="panel">
+    			<p class="text-center">{{ project.short_description }}</p>
+                <img class="img-responsive center-block" src="{{ project.image_path }}" width="680" height="500">
+    		</div>
+
+    		<div>
+    			<p class="text-center">{{ project.long_description }}</p>
+    		</div>
+    	</div>
+
+    	<div class="col-sm-4" style="border: 0px solid #F00">
+    	
+    		<div class="panel">
+    			<span class="project_vitals">{{ project.num_pledges }}</span> pledges
+    		</div>
+
+    		<div class="panel">
+    			<span class="project_vitals">${{ project.total_pledges }}</span> <br/> pledged of ${{ project.goal_amount }} goal
+    		</div>
+
+    		<div class="panel">
+    			<span class="project_vitals">{{ project.num_days_left }}</span> days left
+    		</div>
+
+    		<div class="panel">
+    			<a href="{{ url_for('pledge', project_id=project.id) }}" class="btn btn-punchstarter">Pledge now</a>
+    			
+    		</div>
+    	</div>
+
+    </div>
+
+
+{% endblock content %}
