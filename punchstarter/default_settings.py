@@ -11,7 +11,7 @@ CLOUDINARY_API_SECRET=os.environ.get("CLOUDINARY_API_SECRET", "EFu2EmBiXqWxgXts6
 cloudinary.config( 
   cloud_name = CLOUDINARY_CLOUD_NAME, 
   api_key = CLOUDINARY_API_KEY, 
-  api_secret = CLOUDINARY_API_SECRET" 
+  api_secret = CLOUDINARY_API_SECRET 
 )
 
 
